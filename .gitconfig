@@ -1,0 +1,14 @@
+[user]
+	name = fatedier
+	email = 512654112@qq.com
+[merge]
+	tool = vimdiff
+[color]
+	ui = true
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
