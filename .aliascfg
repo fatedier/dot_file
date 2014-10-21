@@ -1,0 +1,5 @@
+#This file includes alias of common commands.
+
+gitdir="/home/wcl/local/git_fatedier"
+alias gopub="cd $gitdir/faframe/src/public"
+alias gow="cd $gitdir/faframe/src/tests"
