@@ -1,3 +1,6 @@
+# This file is the options file of astyle tool
+# you should copy it to the astyle directory
+
 # --style=ansi 指定ansi风格
 # -c           tab转空格
 # -n           不做备份

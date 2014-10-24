@@ -1,3 +1,6 @@
+# This is the config file of git
+# and it may be copied to personal directory such /home/wcl
+
 [user]
 	name = fatedier
 	email = 512654112@qq.com

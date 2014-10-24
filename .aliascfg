@@ -1,4 +1,5 @@
-# This file includes alias of common commands.
+# This file may be copied to personal home directory such as /home/wcl
+# and includes alias of common commands.
 
 # The personal home dir
 person_home=$(echo ~)
