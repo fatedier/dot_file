@@ -1,5 +1,16 @@
-#This file includes alias of common commands.
+# This file includes alias of common commands.
 
-gitdir="/home/wcl/local/git_fatedier"
-alias gopub="cd $gitdir/faframe/src/public"
-alias gow="cd $gitdir/faframe/src/tests"
+# The personal home dir
+person_home=$(echo ~)
+
+# Personal git dir
+dir_git="~/local/git_fatedier"                   # The directory which including repositories on github of fatedier
+
+alias gopub="cd ${dir_git}/faframe/src/public"
+alias gow="cd ${dir_git}/faframe/src/tests"
+
+# astyle
+dir_astyle="${person_home}/fatedier-tools/astyle"             # The directory including astyle which is used to format the code style
+
+alias astyle="${dir_astyle}/astyle --options=${dir_astyle}/.astylerc"
+alias astyle-no-opt="${dir_astyle}/astyle"
