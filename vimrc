@@ -10,10 +10,11 @@ set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 			" than 50 lines of registers
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
-set ts=4
-set expandtab
+
+set ts=4        " tab所占空格数
+set expandtab   " 用空格替换调tab
 set autoindent
-set number
+set number      " 显示行号
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
