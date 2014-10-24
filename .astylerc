@@ -1,0 +1,5 @@
+# --style=ansi 指定ansi风格
+# -c           tab转空格
+# -n           不做备份
+
+--style=ansi -cn
