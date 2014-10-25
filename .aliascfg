@@ -16,3 +16,8 @@ dir_astyle="${person_home}/fatedier-tools/astyle"             # The directory in
 
 alias astyle="${dir_astyle}/astyle --options=${dir_astyle}/.astylerc"
 alias astyle-no-opt="${dir_astyle}/astyle"
+
+
+# Some shell to do
+
+stty -ixon      # Add this command for using Ctrl+S in remote terminals such as xshell

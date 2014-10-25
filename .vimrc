@@ -1,4 +1,4 @@
-" This file may be copied to /etc directory when you use Centos
+" This file may be copied to personal home directory such as /home/wcl
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
@@ -13,10 +13,34 @@ set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 
-set ts=4        " tab所占空格数
-set expandtab   " 用空格替换调tab
-set autoindent
-set number      " 显示行号
+" Personal config
+set ts=4         " tab所占空格数
+set shiftwidth=4 " 自动缩进所使用的空格数
+set expandtab    " 用空格替换tab
+set autoindent   " 自动缩进
+set smartindent  " C语言缩进
+set number       " 显示行号
+set ignorecase   " 搜索忽略大小写
+set incsearch    " 输入字符串就显示匹配点
+
+if has("mouse")
+    set mouse=iv     " 在 insert 和 visual 模式使用鼠标定位
+endif
+
+" Ctrl+S 映射为保存
+nnoremap <C-S> :w<CR>
+inoremap <C-S> <Esc>:w<CR>a
+
+" Ctrl+C 复制，Ctrl+V 粘贴
+inoremap <C-C> y
+inoremap <C-V> <Esc>pa
+vnoremap <C-C> y
+vnoremap <C-V> p
+nnoremap <C-V> p
+
+" Ctrl+W 保存并退出
+inoremap <C-W> <Esc>:wq<CR>
+nnoremap <C-W> :wq<CR>
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
