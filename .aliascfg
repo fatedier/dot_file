@@ -7,6 +7,7 @@ person_home=$(echo ~)
 # Personal git dir
 dir_git="~/local/git_fatedier"                   # The directory which including repositories on github of fatedier
 
+alias gogit="cd ${dir_git}"
 alias gopub="cd ${dir_git}/faframe/src/public"
 alias gow="cd ${dir_git}/faframe/src/tests"
 
