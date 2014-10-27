@@ -13,20 +13,24 @@ set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 
-" Personal config
-set ts=4         " tab所占空格数
-set shiftwidth=4 " 自动缩进所使用的空格数
-set expandtab    " 用空格替换tab
-set autoindent   " 自动缩进
-set smartindent  " C语言缩进
-set number       " 显示行号
-set ignorecase   " 搜索忽略大小写
-set incsearch    " 输入字符串就显示匹配点
+" -----------个人设置-----------
+filetype off 
+
+set ts=4          " tab所占空格数
+set shiftwidth=4  " 自动缩进所使用的空格数
+set expandtab     " 用空格替换tab
+set autoindent    " 自动缩进
+set smartindent   " C语言缩进
+set number        " 显示行号
+set ignorecase    " 搜索忽略大小写
+set incsearch     " 输入字符串就显示匹配点
+set showtabline=2 " 总是显示标签页
 
 if has("mouse")
-    set mouse=iv     " 在 insert 和 visual 模式使用鼠标定位
+    set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
 endif
 
+" -----------键盘映射-----------
 " Ctrl+S 映射为保存
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>a
@@ -38,9 +42,29 @@ vnoremap <C-C> y
 vnoremap <C-V> p
 nnoremap <C-V> p
 
-" Ctrl+W 保存并退出
-inoremap <C-W> <Esc>:wq<CR>
-nnoremap <C-W> :wq<CR>
+" F3 查找当前高亮的单词
+inoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
+vnoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
+
+" -----------插件设置----------
+" ctags 生成的 tags文件的路径
+set tags=/home/wcl/local/git_fatedier/faframe/tags
+" winmanager 的样式设置，包括文件管理器和taglist
+let g:winManagerWindowLayout='FileExplorer|TagList'
+nnoremap wm :WMToggle<cr>
+" cscope
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+" vundle 插件管理器的设置
+" yum 安装 ctags cscope
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles
+" 显示变量、函数列表等
+Bundle "taglist.vim"
+" 窗口管理器
+Bundle "winmanager"
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -82,8 +106,6 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-filetype plugin on
-
 if &term=="xterm"
      set t_Co=8
      set t_Sb=[4%dm
@@ -93,3 +115,5 @@ endif
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
+
+filetype plugin on

@@ -15,3 +15,5 @@
 	ci = commit
 	st = status
 	last = log -1 HEAD
+[core]
+	editor = vim
