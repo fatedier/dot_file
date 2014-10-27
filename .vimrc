@@ -30,10 +30,13 @@ if has("mouse")
     set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
 endif
 
-" -----------颜色配置-----------
-hi Cursor  guifg=#888888 guibg=#888888 gui=NONE
+" -------------颜色配置-------------
+" 补全弹出窗口
+hi Pmenu ctermbg=lightmagenta
+" 补全弹出窗口选中条目
+hi PmenuSel ctermbg=yellow ctermfg=black
 
-" -----------键盘映射-----------
+" -------------键盘映射-------------
 " Ctrl+S 映射为保存
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>a
@@ -49,7 +52,7 @@ nnoremap <C-V> p
 inoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 vnoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 
-" -----------插件设置----------
+" -------------插件设置------------
 " ctags 生成的 tags文件的路径
 set tags=/home/wcl/local/git_fatedier/faframe/tags
 " winmanager 的样式设置，包括文件管理器和taglist
@@ -60,7 +63,13 @@ nnoremap wm :WMToggle<cr>
 " cs add /home/wcl/local/git_fatedier/faframe/cscope.out /home/wcl/local/git_fatedier/faframe
 
 " neocomplcache
-let g:neocomplcache_enable_at_startup = 0
+let g:neocomplcache_enable_at_startup = 1                 " 设置为自动启用补全
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_enable_auto_delimiter = 1
+let g:neocomplcache_enable_fuzzy_completion = 1
 
 " vundle 插件管理器的设置
 " yum 安装 ctags cscope
