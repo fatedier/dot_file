@@ -30,6 +30,9 @@ if has("mouse")
     set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
 endif
 
+" -----------颜色配置-----------
+hi Cursor  guifg=#888888 guibg=#888888 gui=NONE
+
 " -----------键盘映射-----------
 " Ctrl+S 映射为保存
 nnoremap <C-S> :w<CR>
@@ -53,7 +56,11 @@ set tags=/home/wcl/local/git_fatedier/faframe/tags
 let g:winManagerWindowLayout='FileExplorer|TagList'
 nnoremap wm :WMToggle<cr>
 " cscope
-set cscopequickfix=s-,c-,d-,i-,t-,e-
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
+" cs add /home/wcl/local/git_fatedier/faframe/cscope.out /home/wcl/local/git_fatedier/faframe
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 0
 
 " vundle 插件管理器的设置
 " yum 安装 ctags cscope
@@ -65,6 +72,10 @@ call vundle#rc()
 Bundle "taglist.vim"
 " 窗口管理器
 Bundle "winmanager"
+" 标签工具
+Bundle "Visual-Mark"
+" 代码补全工具
+Bundle "neocomplcache"
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
