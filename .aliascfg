@@ -4,6 +4,13 @@
 # The personal home dir
 person_home=$(echo ~)
 
+# personal commands
+alias l='ls -l'
+alias mk='gmake -j 5'
+alias mkc='gmake clean'
+PS1='[\u@\h $(pwd)]'
+export PS1
+
 # Personal git dir
 dir_git="~/local/git_fatedier"                   # The directory which including repositories on github of fatedier
 
@@ -18,6 +25,5 @@ alias astyle="${dir_astyle}/astyle --options=${dir_astyle}/.astylerc"
 alias astyle-no-opt="${dir_astyle}/astyle"
 
 
-# Some shell to do
-
+# Some shell command to do
 stty -ixon      # Add this command for using Ctrl+S in remote terminals such as xshell

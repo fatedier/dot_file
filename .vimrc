@@ -52,9 +52,13 @@ nnoremap <C-V> p
 inoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 vnoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 
+" Ctrl+\ 取消缩进
+inoremap <C-\> <Esc><<i
+
 " -------------插件设置------------
 " ctags 生成的 tags文件的路径
-set tags=/home/wcl/local/git_fatedier/faframe/tags
+set tags+=/home/wcl/local/git_fatedier/faframe/tags
+
 " winmanager 的样式设置，包括文件管理器和taglist
 let g:winManagerWindowLayout='FileExplorer|TagList'
 nnoremap wm :WMToggle<cr>
