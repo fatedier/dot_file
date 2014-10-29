@@ -1,7 +1,14 @@
 #!/bin/env sh
-for var in $@
-do
-    echo $var
-done
 
-for var in $*
+function fun ()
+{
+    echo $#
+    echo $0
+    echo $1
+    echo $2
+    echo $3
+    return 3
+}
+
+fun aa bb cc dd ee ff
+echo $?
