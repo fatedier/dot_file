@@ -19,11 +19,11 @@ function check_git()
 
 function check_dir_vundle
 {
-    if [ -e "${HOME}/ttt/bundle/vundle/" ]; then
+    if [ -e "${HOME}/.vim/bundle/vundle/" ]; then
         echo "vundle was installed ago,setup will continue..."
     else
         echo -e "\nvundle is installing..."
-        git clone https://github.com/gmarik/vundle.git ~/ttt/bundle/vundle
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     fi
 }
 
@@ -32,12 +32,6 @@ function copy_cfg_files
     #TODO
     if [ -e ".aliascfg" ] && [ ! -e "${HOME}/.aliascfg" -o `find -newer .aliascfg|grep "${HOME}/.aliascfg" &> /dev/null` ]; then
         cp .aliascfg ~/
-    fi
-    if [ -e ".gitconfig" ]; then
-        cp .gitconfig ~/
-    fi
-    if [ -e ".vimrc" ]; then
-        cp .vimrc ~/
     fi
 }
 
