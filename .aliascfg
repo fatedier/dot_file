@@ -5,7 +5,7 @@
 person_home=$(echo ~)
 
 # personal commands
-alias l='ls -l'
+alias l='ls -lrt'
 alias mk='gmake -j 5'
 alias mkc='gmake clean'
 PS1='[\u@\h $(pwd)]'
