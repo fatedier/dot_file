@@ -12,6 +12,7 @@ export PS1
 dir_git="~/local/git_fatedier"                   # The directory which including repositories on github of fatedier
 alias gogit="cd ${dir_git}"
 alias gopub="cd ${dir_git}/faframe/src/public"
+alias gott="cd ${dir_git}/fatest/unp/src/app"
 alias gow="cd ${dir_git}/faframe/src/tests"
 
 # astyle
