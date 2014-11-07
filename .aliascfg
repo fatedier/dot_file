@@ -13,6 +13,7 @@ dir_git="~/local/git_fatedier"                   # The directory which including
 alias gogit="cd ${dir_git}"
 alias gopub="cd ${dir_git}/faframe/src/public"
 alias gott="cd ${dir_git}/fatest/unp/src/app"
+alias gotool="cd ${HOME}/fatedier-tools"
 alias gow="cd ${dir_git}/faframe/src/tests"
 
 # astyle
