@@ -26,3 +26,4 @@ alias iconvfa="${HOME}/fatedier-tools/faconv/iconvfa.sh"
 
 # Some shell command to do
 stty -ixon      # Add this command for using Ctrl+S in remote terminals such as xshell
+ulimit -c 2000
