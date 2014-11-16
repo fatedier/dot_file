@@ -15,6 +15,7 @@ alias gopub="cd ${dir_git}/faframe/src/public"
 alias gott="cd ${dir_git}/fatest/unp/src/app"
 alias gotool="cd ${HOME}/fatedier-tools"
 alias gow="cd ${dir_git}/faframe/src/tests"
+alias gopy="cd ${dir_git}/fatest/python"
 
 # astyle
 dir_astyle="${HOME}/fatedier-tools/astyle"             # The directory including astyle which is used to format the code style
