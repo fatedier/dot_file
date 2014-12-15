@@ -5,7 +5,7 @@
 Custom
     </Look>
     <Font Category="Dockable Windows" Face="Segoe UI">
--12:0:0:0:400:0:0:0:1:0:0:0:22
+-12:0:0:0:400:0:0:0:1:0:0:0:8
     </Font>
     <Color ID="ID_DOCKABLE_WINDOW_TEXT" Category="Dockable Window" Description="Text" Value="#000000"/>
     <Color ID="ID_DOCKABLE_WINDOW_BACKGROUND" Category="Dockable Window" Description="Background" Value="#595959"/>
@@ -137,10 +137,10 @@ Custom
   </Window>
   <Editor>
     <Font Category="Normal" Face="Courier New">
--13:0:0:0:400:0:0:0:255:0:0:0:22
+-13:0:0:0:400:0:0:0:255:0:0:0:8
     </Font>
     <Font Category="Hex/Column" Face="Courier New">
--13:0:0:0:400:0:0:0:255:0:0:0:22
+-13:0:0:0:400:0:0:0:255:0:0:0:8
     </Font>
     <Boolean Category="Active Line" Value="false"/>
     <Boolean Category="Active Column" Value="false"/>
@@ -162,6 +162,29 @@ Custom
     <Color Category="LCI Unsaved" Value="#FF6A6A"/>
   </Editor>
   <Languages>
+    <Language Name="4GL-SQL">
+      <ColorPair Category="Text" Foreground="#E8E8E8" Background="#FFFFFF" Auto="true"/>
+      <ColorPair Category="Comments" Foreground="#9B9BFF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Comments">
+Normal
+      </FontStyle>
+      <ColorPair Category="Strings" Foreground="#FF8080" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Strings">
+Normal
+      </FontStyle>
+      <ColorPair Category="Numbers" Foreground="#FF4D4D" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Numbers">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 1" Foreground="#2894FF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 1">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 2" Foreground="#FFFF9B" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 2">
+Normal
+      </FontStyle>
+    </Language>
     <Language Name="C/C++">
       <ColorPair Category="Text" Foreground="#DFDFDF" Background="#FFFFFF" Auto="true"/>
       <ColorPair Category="Comments" Foreground="#8686FF" Background="#FFFFFF" Auto="true"/>
@@ -334,13 +357,26 @@ Normal
       </FontStyle>
     </Language>
     <Language Name="XML">
-      <ColorPair Category="Numbers" Foreground="#FF0000" Background="#FFFFFF" Auto="true"/>
+      <ColorPair Category="Text" Foreground="#E8E8E8" Background="#FFFFFF" Auto="true"/>
+      <ColorPair Category="Strings" Foreground="#FF5555" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Strings">
+Normal
+      </FontStyle>
+      <ColorPair Category="Numbers" Foreground="#EAEAEA" Background="#FFFFFF" Auto="true"/>
       <FontStyle Category="Numbers">
 Bold
       </FontStyle>
-      <ColorPair Category="Color Group 2" Foreground="#FF0000" Background="#FFFFFF" Auto="true"/>
+      <ColorPair Category="Color Group 1" Foreground="#00CECE" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 1">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 2" Foreground="#74E800" Background="#FFFFFF" Auto="true"/>
       <FontStyle Category="Color Group 2">
 Bold
+      </FontStyle>
+      <ColorPair Category="Color Group 3" Foreground="#FF8000" Background="#000000" Auto="true"/>
+      <FontStyle Category="Color Group 3">
+Normal
       </FontStyle>
     </Language>
   </Languages>
