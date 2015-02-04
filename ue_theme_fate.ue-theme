@@ -5,7 +5,7 @@
 Custom
     </Look>
     <Font Category="Dockable Windows" Face="Segoe UI">
--12:0:0:0:400:0:0:0:1:0:0:0:8
+-12:0:0:0:400:0:0:0:1:0:0:0:12
     </Font>
     <Color ID="ID_DOCKABLE_WINDOW_TEXT" Category="Dockable Window" Description="Text" Value="#000000"/>
     <Color ID="ID_DOCKABLE_WINDOW_BACKGROUND" Category="Dockable Window" Description="Background" Value="#595959"/>
@@ -137,10 +137,10 @@ Custom
   </Window>
   <Editor>
     <Font Category="Normal" Face="Courier New">
--13:0:0:0:400:0:0:0:255:0:0:0:8
+-13:0:0:0:400:0:0:0:255:0:0:0:11
     </Font>
     <Font Category="Hex/Column" Face="Courier New">
--13:0:0:0:400:0:0:0:255:0:0:0:8
+-13:0:0:0:400:0:0:0:255:0:0:0:11
     </Font>
     <Boolean Category="Active Line" Value="false"/>
     <Boolean Category="Active Column" Value="false"/>
@@ -312,6 +312,45 @@ Normal
       </FontStyle>
       <ColorPair Category="Color Group 20" Foreground="#0000FF" Background="#FFFFFF" Auto="true"/>
       <FontStyle Category="Color Group 20">
+Normal
+      </FontStyle>
+    </Language>
+    <Language Name="PHP">
+      <ColorPair Category="Text" Foreground="#E7E7E7" Background="#FFFFFF" Auto="true"/>
+      <ColorPair Category="Comments" Foreground="#7575FF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Comments">
+Normal
+      </FontStyle>
+      <ColorPair Category="Strings" Foreground="#FF8080" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Strings">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 1" Foreground="#FFFF37" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 1">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 3" Foreground="#FF732F" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 3">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 4" Foreground="#00BD00" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 4">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 5" Foreground="#80FFFF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 5">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 6" Foreground="#80FFFF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 6">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 7" Foreground="#80FFFF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 7">
+Normal
+      </FontStyle>
+      <ColorPair Category="Color Group 8" Foreground="#80FFFF" Background="#FFFFFF" Auto="true"/>
+      <FontStyle Category="Color Group 8">
 Normal
       </FontStyle>
     </Language>
