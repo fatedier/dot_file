@@ -51,6 +51,20 @@ function copy_cfg_files
     echo "Copy config files down"
 }
 
+function add_include_to_bash_profile
+{
+    echo -e "\nCheck if .bash_profile including .aliascfg..."
+    grep "~/.aliascfg" ~/.bash_profile &>/dev/null
+    if [ $? != 0 ]; then
+        echo -e "\n# Include files\nif [ -f ~/.aliascfg ]; then\n    . ~/.aliascfg\nfi" >> ~/.bash_profile
+        echo "File .bash_profile doesn't include .aliascfg, add it success"
+    else
+        echo ".aliascfg is already included"
+    fi
+
+    . ~/.bash_profile
+}
+
 show_help
 echo -n "Are you sure to start? (Y/N)"
 read m_start_flag
@@ -59,7 +73,8 @@ case ${m_start_flag} in
 y|Y)
     check_git
     check_dir_vundle
-    copy_cfg_files    
+    copy_cfg_files
+    add_include_to_bash_profile
     ;;
 n|N)
     exit 0
