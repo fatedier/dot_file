@@ -25,6 +25,7 @@ set number        " 显示行号
 set ignorecase    " 搜索忽略大小写
 set incsearch     " 输入字符串就显示匹配点
 set showtabline=2 " 总是显示标签页
+set noswf         " 不使用交换文件
 
 if has("mouse")
     set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
@@ -32,7 +33,7 @@ endif
 
 " -------------颜色配置-------------
 " 补全弹出窗口
-hi Pmenu ctermbg=lightmagenta
+" hi Pmenu ctermbg=lightmagenta
 " 补全弹出窗口选中条目
 hi PmenuSel ctermbg=yellow ctermfg=black
 
@@ -40,6 +41,9 @@ hi PmenuSel ctermbg=yellow ctermfg=black
 " Ctrl+S 映射为保存
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>a
+" Ctrl+X 映射为退出
+nnoremap <C-X> :q<CR>
+inoremap <C-X> <Esc>:q<CR>
 
 " Ctrl+C 复制，Ctrl+V 粘贴
 inoremap <C-C> y
@@ -52,15 +56,28 @@ nnoremap <C-V> p
 inoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 vnoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 
+" F4 在paste和非paste模式之间切换
+set pastetoggle=<F4>
+
 " Ctrl+\ 取消缩进
 inoremap <C-\> <Esc><<i
+
+" 在vim中调用make进行编译，如果出错，会自动打开QuickFix窗口
+nnoremap <F5> :w<CR>:make<CR><CR>:cw<CR>
+nnoremap <F6> :!make clean<CR>
+" 跳转到上一个或下一个错误
+nnoremap <F7> :cp<CR>
+nnoremap <F8> :cn<CR>
 
 " -------------插件设置------------
 " ctags 生成的 tags文件的路径
 set tags+=/home/wcl/local/git_fatedier/faframe/tags
 
-" winmanager 的样式设置，包括文件管理器和taglist
-let g:winManagerWindowLayout='FileExplorer|TagList'
+" winmanager 的样式设置，包括taglist
+let g:winManagerWindowLayout='TagList'
+" 设置窗口宽度
+let g:winManagerWidth = 30
+
 nnoremap wm :WMToggle<cr>
 " cscope
 " set cscopequickfix=s-,c-,d-,i-,t-,e-
