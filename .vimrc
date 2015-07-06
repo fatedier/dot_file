@@ -16,16 +16,17 @@ set ruler		" show the cursor position all the time
 " -----------个人设置-----------
 filetype off 
 
-set ts=4          " tab所占空格数
-set shiftwidth=4  " 自动缩进所使用的空格数
-set expandtab     " 用空格替换tab
-set autoindent    " 自动缩进
-set smartindent   " C语言缩进
-set number        " 显示行号
-set ignorecase    " 搜索忽略大小写
-set incsearch     " 输入字符串就显示匹配点
-set showtabline=2 " 总是显示标签页
-set noswf         " 不使用交换文件
+set ts=4                " tab所占空格数
+set shiftwidth=4        " 自动缩进所使用的空格数
+set expandtab           " 用空格替换tab
+set autoindent          " 自动缩进
+set smartindent         " C语言缩进
+set number              " 显示行号
+set ignorecase          " 搜索忽略大小写
+set incsearch           " 输入字符串就显示匹配点
+set showtabline=2       " 总是显示标签页
+set noswf               " 不使用交换文件
+set foldmethod=marker   " 对文中的标志折叠
 
 if has("mouse")
     set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
