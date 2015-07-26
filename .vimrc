@@ -93,6 +93,9 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_enable_fuzzy_completion = 1
 
+" vim-go
+let g:go_highlight_trailing_whitespace_error = 0
+
 " vundle 插件管理器的设置
 " yum 安装 ctags cscope
 set rtp+=~/.vim/bundle/vundle/
@@ -107,6 +110,8 @@ Bundle "winmanager"
 Bundle "Visual-Mark"
 " 代码补全工具
 Bundle "neocomplcache"
+" golang插件
+Bundle "fatih/vim-go"
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.

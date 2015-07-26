@@ -18,14 +18,14 @@ alias gow="cd ${dir_git}/faframe/src/tests"
 alias gopy="cd ${dir_git}/fatest/python"
 
 # programes
-dir_astyle="${HOME}/fatedier-tools/astyle"             # The directory including astyle which is used to format the code style
+dir_astyle="${dir_git}/fatedier-tools/astyle"             # The directory including astyle which is used to format the code style
 alias astylefa="${dir_astyle}/astyle --options=${dir_astyle}/.astylerc"
 alias astyle="${dir_astyle}/astyle"
 
-alias iconvfa="${HOME}/fatedier-tools/faconv/iconvfa.sh"
+alias iconvfa="${dir_git}/fatedier-tools/faconv/iconvfa.sh"
 
-alias webbench="${HOME}/fatedier-tools/webbench/webbench"
+alias webbench="${dir_git}/fatedier-tools/webbench/webbench"
 
 # Some shell command to do
 stty -ixon      # Add this command for using Ctrl+S in remote terminals such as xshell
-ulimit -c 2000
+ulimit -c 20000
