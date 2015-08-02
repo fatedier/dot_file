@@ -142,6 +142,7 @@ function download()
         # compile some tools
         cd ${HOME}/local/git_fatedier/fatedier-tools/astyle && gmake
     fi
+    cd ~/local/git_fatedier
     # dot_file
     if [ ! -d "${HOME}/local/git_fatedier/dot_file" ]; then
         echo 'start download dot_file...'
