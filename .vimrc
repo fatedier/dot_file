@@ -79,7 +79,7 @@ let g:winManagerWindowLayout='TagList'
 " 设置窗口宽度
 let g:winManagerWidth = 30
 
-nnoremap wm :WMToggle<cr>
+nnoremap <C-m> :WMToggle<cr>
 " cscope
 " set cscopequickfix=s-,c-,d-,i-,t-,e-
 " cs add /home/wcl/local/git_fatedier/faframe/cscope.out /home/wcl/local/git_fatedier/faframe
