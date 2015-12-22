@@ -5,26 +5,32 @@
 alias l='ls -lrt'
 alias mk='gmake -j 5'
 alias mkc='gmake clean'
-PS1='[\u@\h $(pwd)]'
-export PS1
+alias gp='grep -nr'
 
 # Personal git dir
 dir_git="~/local/git_fatedier"                   # The directory which including repositories on github of fatedier
 alias gogit="cd ${dir_git}"
-alias gopub="cd ${dir_git}/faframe/src/public"
-alias gott="cd ${dir_git}/fatest/ipc"
-alias gotool="cd ${HOME}/fatedier-tools"
-alias gow="cd ${dir_git}/faframe/src/tests"
-alias gopy="cd ${dir_git}/fatest/python"
 
 # programes
 dir_astyle="${dir_git}/fatedier-tools/astyle"             # The directory including astyle which is used to format the code style
 alias astylefa="${dir_astyle}/astyle --options=${dir_astyle}/.astylerc"
 alias astyle="${dir_astyle}/astyle"
-
 alias iconvfa="${dir_git}/fatedier-tools/faconv/iconvfa.sh"
-
 alias webbench="${dir_git}/fatedier-tools/webbench/webbench"
+
+# self PROMPT
+echo ${SHELL} | grep bash > /dev/null
+if [ $? = 0 ]; then
+    PS1='[\u@\h $(pwd)]'
+    export PS1
+fi
+
+# other config
+TZ='Asia/Shanghai'; export TZ
+export LANG=en_US.UTF-8
+
+# golang path
+export GOPATH="/home/wcl/go_projects:/home/wcl/agent/log_agent/src/plugin"
 
 # Some shell command to do
 stty -ixon      # Add this command for using Ctrl+S in remote terminals such as xshell

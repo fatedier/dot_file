@@ -72,7 +72,7 @@ nnoremap <F8> :cn<CR>
 
 " -------------插件设置------------
 " ctags 生成的 tags文件的路径
-set tags+=/home/wcl/local/git_fatedier/faframe/tags
+" set tags+=/home/wcl/local/git_fatedier/faframe/tags
 
 " winmanager 的样式设置，包括taglist
 let g:winManagerWindowLayout='TagList'
