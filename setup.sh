@@ -263,9 +263,7 @@ function download()
 
 function use_zsh()
 {
-    # chsh -s /bin/zsh
-    # 这里下载oh-my-zsh的脚本里已经执行过了
-    # zsh
+    sudo chsh -s /bin/zsh wcl
     # source ~/.zshrc
     echo -e "${lc}${cgreen}You need to relogin to use zsh${rc}"
 }
