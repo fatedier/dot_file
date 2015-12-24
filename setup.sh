@@ -63,7 +63,7 @@ function copy_cfg_files
     fi
 
     # .tmux.conf
-    find ~ -maxdepth 1 -newer ".tmux.conf" | grep "${HOME}/.zshrc" $>/dev/null
+    find ~ -maxdepth 1 -newer ".tmux.conf" | grep "${HOME}/.zshrc" &>/dev/null
     if [ -e ".tmux.conf" -a $? != 0 ]; then
         cp -f .tmux.conf ~/
         echo "cp -f .tmux.conf ~/"
@@ -207,14 +207,14 @@ function create_dir()
     fi
     # golang directory
     if [ ! -d "${HOME}/go_projects/src" ]; then
-        echo "mkdir -p ${HOME}/go_projects/src" ]; then
+        echo "mkdir -p ${HOME}/go_projects/src"
         mkdir -p ${HOME}/go_projects/src
     fi
 }
 
 function download()
 {
-    cd {HOME}/local/git_fatedier
+    cd ${HOME}/local/git_fatedier
     # fatedier-tools
     if [ ! -d "${HOME}/local/git_fatedier/fatedier-tools" ]; then
         echo 'start download fatedier-tools...'
@@ -222,7 +222,7 @@ function download()
         # compile some tools
         cd ${HOME}/local/git_fatedier/fatedier-tools/astyle && make
     fi
-    cd {HOME}/local/git_fatedier
+    cd ${HOME}/local/git_fatedier
     # dot_file
     if [ ! -d "${HOME}/local/git_fatedier/dot_file" ]; then
         echo 'start download dot_file...'
