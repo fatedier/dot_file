@@ -69,7 +69,7 @@ function copy_cfg_files
     fi
 
     # .tmux.conf
-    find ~ -maxdepth 1 -newer ".tmux.conf" | grep "${HOME}/.zshrc" &>/dev/null
+    find ~ -maxdepth 1 -newer ".tmux.conf" | grep "${HOME}/.tmux.conf" &>/dev/null
     if [ -e ".tmux.conf" -a $? != 0 ]; then
         cp -f .tmux.conf ~/
         echo "cp -f .tmux.conf ~/"
@@ -195,7 +195,7 @@ function install_package
     which tmux &> /dev/null
     if [ $? -ne 0 ]; then
         echo "tmux is not found, to install..."
-        sudo yum install -y zsh
+        sudo yum install -y tmux
         if [ $? -ne 0 ]; then
             echo -e "${lc}${cred}Install tmux failed${rc}"
             exit -1
@@ -290,6 +290,7 @@ y|Y)
     fi
     # vim相关
     check_dir_vundle
+    echo "Setup over"
     ;;
 n|N)
     exit 0
