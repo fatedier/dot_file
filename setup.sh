@@ -29,18 +29,21 @@ function check_dir_vundle
 function copy_cfg_files
 {
     echo ""
+    # .aliascfg
     find ~ -maxdepth 1 -newer ".aliascfg" | grep "${HOME}/.aliascfg" &>/dev/null
     if [ -e ".aliascfg" -a $? != 0 ]; then
         cp -f .aliascfg ~/
         echo "cp -f .aliascfg ~/"
     fi
 
+    # .gitconfig
     find ~ -maxdepth 1 -newer ".gitconfig" | grep "${HOME}/.gitconfig" &>/dev/null
     if [ -e ".gitconfig" -a $? != 0 ]; then
         cp -f .gitconfig ~/
         echo "cp -f .gitconfig ~/"
     fi
 
+    # .vimrc
     find ~ -maxdepth 1 -newer ".vimrc" | grep "${HOME}/.vimrc" &>/dev/null
     if [ -e ".vimrc" -a $? != 0 ]; then
         cp -f .vimrc ~/
@@ -59,6 +62,12 @@ function copy_cfg_files
         echo "cp -f .zshrc ~/"
     fi
 
+    # .tmux.conf
+    find ~ -maxdepth 1 -newer ".tmux.conf" | grep "${HOME}/.zshrc" $>/dev/null
+    if [ -e ".tmux.conf" -a $? != 0 ]; then
+        cp -f .tmux.conf ~/
+        echo "cp -f .tmux.conf ~/"
+    fi
     echo "Copy config files down"
 }
 
@@ -164,7 +173,7 @@ function install_package
         echo "Install zsh success"
     fi
     # autojump-zsh
-    echo "check autojump-zsh"
+    echo "check autojump-zsh..."
     rpm -qa|grep autojump-zsh >/dev/null
     if [ $? -ne 0 ]; then
         echo "autojump-zsh is not found, to install..."
@@ -175,20 +184,37 @@ function install_package
         fi
         echo "Install autojump-zsh success"
     fi
+    # tmux
+    echo "check tmux..."
+    which tmux &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "tmux is not found, to install..."
+        sudo yum install -y zsh
+        if [ $? -ne 0 ]; then
+            echo "Install tmux failed"
+            exit -1
+        fi
+        echo "Install tmux success"
+    fi
 }
 
 function create_dir()
 {
     # git_fatedier
     if [ ! -d "${HOME}/local/git_fatedier" ]; then
-        echo "mkdir -p {HOME}/local/git_fatedier"
-        mkdir -p ~/local/git_fatedier
+        echo "mkdir -p ${HOME}/local/git_fatedier"
+        mkdir -p ${HOME}/local/git_fatedier
+    fi
+    # golang directory
+    if [ ! -d "${HOME}/go_projects/src" ]; then
+        echo "mkdir -p ${HOME}/go_projects/src" ]; then
+        mkdir -p ${HOME}/go_projects/src
     fi
 }
 
 function download()
 {
-    cd ~/local/git_fatedier
+    cd {HOME}/local/git_fatedier
     # fatedier-tools
     if [ ! -d "${HOME}/local/git_fatedier/fatedier-tools" ]; then
         echo 'start download fatedier-tools...'
@@ -196,7 +222,7 @@ function download()
         # compile some tools
         cd ${HOME}/local/git_fatedier/fatedier-tools/astyle && make
     fi
-    cd ~/local/git_fatedier
+    cd {HOME}/local/git_fatedier
     # dot_file
     if [ ! -d "${HOME}/local/git_fatedier/dot_file" ]; then
         echo 'start download dot_file...'
