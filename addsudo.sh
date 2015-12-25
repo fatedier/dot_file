@@ -15,6 +15,8 @@ if [ "${now_user}X" != "root"X ]; then
     exit -1
 fi
 
+useradd ${useradd}
+
 chmod o+w /etc/sudoers
 cat /etc/sudoers | grep ${username}$'\t'ALL=\(ALL\) &>/dev/null
 if [ $? != 0 ]; then
