@@ -1,3 +1,3 @@
 # config
-username=`whoami`
+username='wcl'
 use_shell='zsh'     # bash or zsh
