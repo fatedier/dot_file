@@ -10,6 +10,15 @@ rc='\033[0m'
 cred='31m'        # red
 cgreen='32m'        # green
 
+function check_user()
+{
+    now_user=`whoami`
+    if [ ${now_user}X != ${username}X ]; then
+        echo -e "Config user is ${lc}${cred}${username}${rc}, but your username is ${lc}${cred}${now_user}${rc}"
+        exit -1
+    fi
+}
+
 function show_help()
 {
     echo -e "\n${lc}${cgreen}The following contents will to be done:${rc}\n"
@@ -269,6 +278,7 @@ function use_zsh()
     echo -e "${lc}${cgreen}You need to relogin to use zsh${rc}"
 }
 
+check_user
 show_help
 echo -ne "Are you sure to start? Make sure you have the ${lc}${cred}sudo${rc} permissions (Y/N)"
 read m_start_flag
