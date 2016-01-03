@@ -1,7 +1,7 @@
 #!/bin/env bash
 
-# config
-use_shell='zsh'     # bash or zsh
+. ./config
+
 now_path=`pwd`
 
 # var
@@ -17,6 +17,7 @@ function show_help()
     echo -e "2 Copy config files to corresponding directory\n"
     echo -e "  including .aliascfg .gitconfig .vimrc .zshrc .tmux.conf\n"
     echo -e "3 Download some packages using yum\n"
+    echo -e "4 Your username is ${lc}${cred}${username}${rc}\n"
 }
 
 function check_dir_vundle
@@ -263,7 +264,7 @@ function download()
 
 function use_zsh()
 {
-    sudo chsh -s /bin/zsh wcl
+    sudo chsh -s /bin/zsh ${username}
     # source ~/.zshrc
     echo -e "${lc}${cgreen}You need to relogin to use zsh${rc}"
 }

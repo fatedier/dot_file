@@ -1,7 +1,6 @@
 #!/bin/env sh
 
-# config
-username='wcl'
+. ./config
 
 # var
 lc='\033['
