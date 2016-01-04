@@ -47,7 +47,7 @@ plugins=(git sudo)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
+export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:${HOME}/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
