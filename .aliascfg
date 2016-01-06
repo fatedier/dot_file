@@ -30,7 +30,7 @@ TZ='Asia/Shanghai'; export TZ
 export LANG=en_US.UTF-8
 
 # golang path
-export GOPATH="/home/${username}/go_projects"
+export GOPATH="${HOME}/go_projects"
 
 # Some shell command to do
 stty -ixon      # Add this command for using Ctrl+S in remote terminals such as xshell

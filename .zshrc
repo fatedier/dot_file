@@ -47,7 +47,12 @@ plugins=(git sudo)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:${HOME}/bin"
+#Include files
+if [ -f ~/.aliascfg ]; then
+    . ~/.aliascfg
+fi
+
+export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:${HOME}/bin:${GOPATH}/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -68,8 +73,3 @@ export EDITOR='vim'
 
 # 命令提示符的展示
 PROMPT='[%{$reset_color%}%n@%m %{$fg_bold[green]%}%p%{$reset_color%}%d%{$reset_color%}]'
-
-#Include files
-if [ -f ~/.aliascfg ]; then
-    . ~/.aliascfg
-fi
