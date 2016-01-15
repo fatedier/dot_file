@@ -95,6 +95,8 @@ let g:neocomplcache_enable_fuzzy_completion = 1
 
 " vim-go
 let g:go_highlight_trailing_whitespace_error = 0
+let g:go_fmt_fail_silently = 1  " 退出时如果语法出错不提醒
+let g:go_fmt_autosave = 0       " 保存时不自动执行gofmt
 
 " vundle 插件管理器的设置
 " yum 安装 ctags cscope
