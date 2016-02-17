@@ -212,6 +212,32 @@ function install_package
         fi
         echo -e "${lc}${cgreen}Install tmux success${rc}"
     fi
+    # gem
+    echo "check gem..."
+    which gem &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "gem is not found, to install..."
+        sudo yum install -y rubygems
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Install gem failed${rc}"
+            exit -1
+        fi
+        echo -e "${lc}${cgreen}Install gem success${rc}"
+    fi
+    # change gem source
+    gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
+    # tmuxinator
+    echo "check tmuxinator..."
+    which tmuxinator &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "tmuxinator is not found, to install..."
+        gem install tmuxinator
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Install tmuxinator failed${rc}"
+            exit -1
+        fi
+        echo -e "${lc}${cgreen}Install tmuxinator success${rc}"
+    fi
 }
 
 function create_dir()
@@ -232,6 +258,15 @@ function create_dir()
             echo -e "${lc}${cred}mkdir -p ${HOME}/go_projects/src failed${rc}"
         else
             echo -e "${lc}${cgreen}mkdir -p ${HOME}/go_projects/src success${rc}"
+        fi
+    fi
+    # .tmuxinator
+    if [ ! -d "${HOME}/.tmuxinator" ]; then
+        mkdir -p ${HOME}/.tmuxinator
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}mkdir -p ${HOME}/.tmuxinator failed${rc}"
+        else
+            echo -e "${lc}${cgreen}mkdir -p ${HOME}/.tmuxinator success${rc}"
         fi
     fi
 }
