@@ -315,7 +315,7 @@ function use_zsh()
 
 check_user
 show_help
-echo -ne "Are you sure to start? Make sure you have the ${lc}${cred}sudo${rc} permissions (Y/N)"
+echo -ne "Are you sure to start? Make sure you have the ${lc}${cred}sudo${rc} permissions ${lc}${cred}without password${rc}(Y/N)"
 read m_start_flag
 
 case ${m_start_flag} in
