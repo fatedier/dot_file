@@ -1,5 +1,5 @@
-# This is the config file of git
-# and it may be copied to personal directory such /home/wcl
+# The config file of git
+# and it may be copied to personal directory such as /home/xxx
 
 [user]
 	name = fatedier
