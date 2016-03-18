@@ -238,6 +238,18 @@ function install_package
         fi
         echo -e "${lc}${cgreen}Install tmuxinator success${rc}"
     fi
+    # tree
+    echo "check tree..."
+    which tree &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "tree is not found, to install..."
+        sudo yum install -y tree
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Install tree failed${rc}"
+            exit -1
+        fi
+        echo -e "${lc}${cgreen}Install tree success${rc}"
+    fi
 }
 
 function create_dir()
