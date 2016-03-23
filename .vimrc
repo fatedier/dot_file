@@ -84,6 +84,12 @@ nnoremap <C-m> :WMToggle<cr>
 " set cscopequickfix=s-,c-,d-,i-,t-,e-
 " cs add /home/wcl/local/git_fatedier/faframe/cscope.out /home/wcl/local/git_fatedier/faframe
 
+" Visual-Mark
+" 下一个标签
+nmap mn <F2>
+" 上一个标签
+nmap mp <S-F2>
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1                 " 设置为自动启用补全
 let g:neocomplcache_enable_auto_select = 1
