@@ -312,7 +312,7 @@ function download()
     # oh-my-zsh
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
         echo 'start download oh-my-zsh...'
-        wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+        wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
         echo -e "${lc}${cgreen}Download oh-my-zsh over${rc}"
     fi
     cd ${now_path}
