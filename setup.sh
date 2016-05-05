@@ -250,6 +250,18 @@ function install_package
         fi
         echo -e "${lc}${cgreen}Install tree success${rc}"
     fi
+    # wget
+    echo "check wget..."
+    which wget &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "wget is not found, to install..."
+        sudo yum install -y wget
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Install wget failed${rc}"
+            exit -1
+        fi
+        echo -e "${lc}${cgreen}Install wget success${rc}"
+    fi
 }
 
 function create_dir()
