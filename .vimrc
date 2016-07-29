@@ -90,6 +90,10 @@ nmap mn <F2>
 " 上一个标签
 nmap mp <S-F2>
 
+" 取消显示行号
+nnoremap mu :set nonu<CR>
+nnoremap mi :set nu<CR>
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1                 " 设置为自动启用补全
 let g:neocomplcache_enable_auto_select = 1
