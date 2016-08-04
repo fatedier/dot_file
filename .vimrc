@@ -39,20 +39,6 @@ endif
 hi PmenuSel ctermbg=yellow ctermfg=black
 
 " -------------键盘映射-------------
-" Ctrl+S 映射为保存
-nnoremap <C-S> :w<CR>
-inoremap <C-S> <Esc>:w<CR>a
-" Ctrl+X 映射为退出
-nnoremap <C-X> :q<CR>
-inoremap <C-X> <Esc>:q<CR>
-
-" Ctrl+C 复制，Ctrl+V 粘贴
-inoremap <C-C> y
-inoremap <C-V> <Esc>pa
-vnoremap <C-C> y
-vnoremap <C-V> p
-nnoremap <C-V> p
-
 " F3 查找当前高亮的单词
 inoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
 vnoremap <F3> *<Esc>:noh<CR>:match Todo /\k*\%#\k*/<CR>v
@@ -70,29 +56,70 @@ nnoremap <F6> :!make clean<CR>
 nnoremap <F7> :cp<CR>
 nnoremap <F8> :cn<CR>
 
-" -------------插件设置------------
-" ctags 生成的 tags文件的路径
-" set tags+=/home/wcl/local/git_fatedier/faframe/tags
+" 行号显示
+nnoremap <silent> mu :set nonu<CR>
+nnoremap <silent> mi :set nu<CR>
 
+" tab 操作
+nnoremap <silent> <C-l> :tabnext<CR>
+nnoremap <silent> <C-h> :tabprev<CR>
+for n in range(1,9)
+    execute 'nnoremap <silent> <C-n>'.n ':tabnext '.n.'<CR>'
+endfor
+
+" change mapleader
+let mapleader = ","
+
+" 将当前 QuickFix中的文件在新的 tab 页中打开
+nnoremap <C-t>t  <C-W><CR><C-W>T
+" 将当前 QuickFix中的文件在新的窗口中以水平分隔的方式打开
+nnoremap <C-t>v <C-W><CR><C-W>H<C-W>b<C-W>J<C-W>t
+
+" key-bind for go
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>d <Plug>(go-def-vertical)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap gi :GoImports<CR>
+au FileType go nmap gl :GoMetaLinter<CR>
+au FileType go nmap gc :GoCallees<CR>
+au FileType go nmap gr :GoReferrers<CR>
+
+" -------------插件设置------------
 " winmanager 的样式设置，包括taglist
-let g:winManagerWindowLayout='TagList'
+let g:winManagerWindowLayout='NERDTree|Tagbar'
 " 设置窗口宽度
 let g:winManagerWidth = 30
 
-nnoremap <C-m> :WMToggle<cr>
-" cscope
-" set cscopequickfix=s-,c-,d-,i-,t-,e-
-" cs add /home/wcl/local/git_fatedier/faframe/cscope.out /home/wcl/local/git_fatedier/faframe
+nnoremap <Leader>m :WMToggle<CR>
+
+let g:Tagbar_title = "[Tagbar]"
+function! Tagbar_Start()
+    exe 'q'
+    exe 'TagbarOpen'
+endfunction
+
+function! Tagbar_IsValid()
+    return 1
+endfunction
+
+let g:NERDTree_title = "[NERDTree]"
+function! NERDTree_Start()  
+    exe 'q'
+    exec 'NERDTree'  
+endfunction
+
+function! NERDTree_IsValid()  
+    return 1  
+endfunction
 
 " Visual-Mark
 " 下一个标签
 nmap mn <F2>
 " 上一个标签
 nmap mp <S-F2>
-
-" 取消显示行号
-nnoremap mu :set nonu<CR>
-nnoremap mi :set nu<CR>
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1                 " 设置为自动启用补全
@@ -108,22 +135,58 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:go_fmt_fail_silently = 1  " 退出时如果语法出错不提醒
 let g:go_fmt_autosave = 0       " 保存时不自动执行gofmt
 
-" vundle 插件管理器的设置
-" yum 安装 ctags cscope
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" gocode
+imap <C-o> <C-x><C-o>
 
-" Bundles
-" 显示变量、函数列表等
-Bundle "taglist.vim"
+" let ag instead of ack
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+nnoremap <Leader>a :Ack!<Space>
+
+" ctrlp
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_mruf_max            = 500
+let g:ctrlp_custom_ignore = 'DS_Store\|\.git\|\.hg\|\.svn\|optimized\|compiled\|node_modules\|bower_components'
+let g:ctrlp_open_new_file       = 1
+
+" tagbar
+nnoremap <silent> <Leader>w :TagbarToggle<CR>
+
+" nerdtree
+nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+
+" vundle 插件管理器的设置
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Plugins
+" Vundle
+Plugin 'VundleVim/Vundle.vim'
 " 窗口管理器
-Bundle "winmanager"
+Plugin 'winmanager'
 " 标签工具
-Bundle "Visual-Mark"
+Plugin 'Visual-Mark'
 " 代码补全工具
-Bundle "neocomplcache"
+Plugin 'neocomplcache'
 " golang插件
-Bundle "fatih/vim-go"
+Plugin 'fatih/vim-go'
+" ack搜索
+Plugin 'mileszs/ack.vim'
+" 快速文件打开工具
+Plugin 'ctrlpvim/ctrlp.vim'
+" markdown
+Plugin 'tpope/vim-markdown'
+" go autocompletion
+Plugin 'nsf/gocode', {'rtp': 'nvim/'}
+" 和 taglist 类似
+Plugin 'majutsushi/tagbar'
+" 目录显示
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.

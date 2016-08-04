@@ -31,13 +31,13 @@ function show_help()
 
 function check_dir_vundle
 {
-    if [ -e "${HOME}/.vim/bundle/vundle/" ]; then
-        echo -e "${lc}${cgreen}Vundle was already installed,setup will continue...${rc}"
+    if [ -e "${HOME}/.vim/bundle/Vundle.vim/" ]; then
+        echo -e "${lc}${cgreen}Vundle was already installed, setup will continue...${rc}"
     else
         echo -e "\nVundle is installing..."
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         echo "Start to install plugin by vundle..."
-        vim +BundleInstall +qa
+        vim +PluginInstall +qall
         echo -e "${lc}${cgreen}Install vundle success${rc}"
     fi
 }
@@ -261,6 +261,18 @@ function install_package
             exit -1
         fi
         echo -e "${lc}${cgreen}Install wget success${rc}"
+    fi
+    # ag(the_silver_searcher)
+    echo "check ag..."
+    which wget &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "ag is not found, to install..."
+        sudo yum install -y the_silver_searcher
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Install ag failed${rc}"
+            exit -1
+        fi
+        echo -e "${lc}${cgreen}Install ag success${rc}"
     fi
 }
 
