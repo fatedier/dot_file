@@ -78,9 +78,9 @@ nnoremap <C-t>v <C-W><CR><C-W>H<C-W>b<C-W>J<C-W>t
 " key-bind for go
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>d <Plug>(go-def-vertical)
+au FileType go nmap <Leader>t <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap gi :GoImports<CR>
 au FileType go nmap gl :GoMetaLinter<CR>
