@@ -158,6 +158,9 @@ nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 
+" vim-markdown-toc
+let g:vmt_auto_update_on_save = 0
+
 " vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -185,6 +188,8 @@ Plugin 'nsf/gocode', {'rtp': 'nvim/'}
 Plugin 'majutsushi/tagbar'
 " 目录显示
 Plugin 'scrooloose/nerdtree'
+" markdown toc
+Plugin 'mzlogin/vim-markdown-toc'
 
 call vundle#end()
 
