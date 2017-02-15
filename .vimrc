@@ -67,6 +67,9 @@ for n in range(1,9)
     execute 'nnoremap <silent> <C-n>'.n ':tabnext '.n.'<CR>'
 endfor
 
+" 全文 tab 转 空格
+nnoremap <silent> ts :%ret!<CR>
+
 " change mapleader
 let mapleader = ","
 
