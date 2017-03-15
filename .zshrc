@@ -43,7 +43,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo tmuxinator)
+plugins=(git sudo autojump docker vagrant golang)
 
 # User configuration
 
@@ -52,7 +52,7 @@ if [ -f ~/.aliascfg ]; then
     . ~/.aliascfg
 fi
 
-export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:${HOME}/bin:${GOPATH}/bin"
+export PATH="${PATH}:${HOME}/bin:${GOPATH}/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

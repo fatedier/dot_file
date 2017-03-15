@@ -85,6 +85,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 au FileType go nmap <Leader>t <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap gt <Plug>(go-test)
 au FileType go nmap gi :GoImports<CR>
 au FileType go nmap gl :GoMetaLinter<CR>
 au FileType go nmap gc :GoCallees<CR>
@@ -164,6 +165,9 @@ let g:vimfiler_safe_mode_by_default = 0
 " vim-markdown-toc
 let g:vmt_auto_update_on_save = 0
 
+" SudoEdit
+nnoremap <Leader>s :SudoWrite<CR>
+
 " vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -193,6 +197,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 " markdown toc
 Plugin 'mzlogin/vim-markdown-toc'
+" git
+Plugin 'tpope/vim-fugitive'
+" sudo
+Plugin 'chrisbra/SudoEdit.vim'
 
 call vundle#end()
 
