@@ -194,31 +194,14 @@ nnoremap <Leader>s :SudoWrite<CR>
 nnoremap <silent><Leader>u :UndotreeToggle<CR>
 
 " easymotion/vim-easymotion
-function! s:incsearch_config(...) abort
-  return incsearch#util#deepextend(deepcopy({
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {
-  \     "\<CR>": '<Over>(easymotion)'
-  \   },
-  \   'is_expr': 0
-  \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
-noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
-noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
-
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzyword#converter()],
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+" 忽略搜索大小写
+let g:EasyMotion_smartcase = 1
+" 快速搜索前两个字符
+nmap s <Plug>(easymotion-s2)
+map  \ <Plug>(easymotion-sn)
+omap \ <Plug>(easymotion-tn)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
