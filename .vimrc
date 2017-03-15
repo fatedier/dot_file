@@ -134,10 +134,32 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_enable_fuzzy_completion = 1
 
+" Shougo/neosnippet
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+if has('conceal')
+    set conceallevel=2 concealcursor=niv
+endif
+
 " vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_fmt_fail_silently = 1  " 退出时如果语法出错不提醒
 let g:go_fmt_autosave = 0       " 保存时不自动执行gofmt
+
+" tpope/vim-fugitive
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gd :Gdiff<CR>
+nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gb :Gblame<CR>
+nnoremap <silent> <Leader>gl :Glog<CR>
+nnoremap <silent> <Leader>gp :Git push<CR>
 
 " gocode
 imap <C-o> <C-x><C-o>
@@ -168,6 +190,36 @@ let g:vmt_auto_update_on_save = 0
 " SudoEdit
 nnoremap <Leader>s :SudoWrite<CR>
 
+" undotree
+nnoremap <silent><Leader>u :UndotreeToggle<CR>
+
+" easymotion/vim-easymotion
+function! s:incsearch_config(...) abort
+  return incsearch#util#deepextend(deepcopy({
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {
+  \     "\<CR>": '<Over>(easymotion)'
+  \   },
+  \   'is_expr': 0
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
 " vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -181,6 +233,8 @@ Plugin 'winmanager'
 Plugin 'Visual-Mark'
 " 代码补全工具
 Plugin 'neocomplcache'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 " golang插件
 Plugin 'fatih/vim-go'
 " ack搜索
@@ -201,8 +255,41 @@ Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'tpope/vim-fugitive'
 " sudo
 Plugin 'chrisbra/SudoEdit.vim'
+" undo窗口
+Plugin 'mbbill/undotree'
+" 快捷操作 surround
+Plugin 'tpope/vim-surround'
+" 代码注释
+Plugin 'scrooloose/nerdcommenter'
+" 快速跳转
+Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-fuzzy.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
 
 call vundle#end()
+
+" 插件按键说明
+
+" vim-markdown-toc
+" :GenTocGFM 生成 markdown toc
+
+" tpope/vim-fugitive
+" :Gdiff
+" :Gstatus
+" :Gblame
+
+" vim-surround
+" cs"' 去掉" 添加'
+" cst" 还原回两边的 "
+" ds" 去掉两边的 "
+" ysiw" 给一个单词两边加 "
+" yss" 给整行两边加 "
+
+" scrooloose/nerdcommenter
+" <leader>cc 添加注释
+" <leader>c<Space> 未添加注释时添加，已添加取消，会给每一行添加注释
+" <Leader>cm 使用多行注释
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
