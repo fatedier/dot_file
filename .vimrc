@@ -16,6 +16,8 @@ set ruler		" show the cursor position all the time
 " -----------个人设置-----------
 filetype off 
 
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
 set ts=4                " tab所占空格数
 set shiftwidth=4        " 自动缩进所使用的空格数
 set expandtab           " 用空格替换tab
@@ -203,6 +205,18 @@ omap \ <Plug>(easymotion-tn)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+
+let g:syntastic_javascript_checkers = ['jshint']
+
+" vim-jsbeautify
+autocmd FileType javascript noremap <silent> <Leader>f :call JsBeautify()<CR>
+autocmd FileType html noremap <silent> <Leader>f :call HtmlBeautify()<CR>
+autocmd FileType css noremap <silent> <Leader>f :call CSSBeautify()<CR>
+
 " vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -249,6 +263,13 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
+" 语法检查
+Plugin 'vim-syntastic/syntastic'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
+Plugin 'elzr/vim-json'
+Plugin 'maksimr/vim-jsbeautify'
 
 call vundle#end()
 
