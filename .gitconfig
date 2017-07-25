@@ -2,23 +2,26 @@
 # and it may be copied to personal directory such as /home/xxx
 
 [user]
-	name = fatedier
-	email = fatedier@gmail.com
+    name = fatedier
+    email = fatedier@gmail.com
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [color]
-	ui = true
+    ui = true
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
-	lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit -10 --date=short
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+    lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit -10 --date=short
     lgd = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit -10 --date=iso
     lghis = log --date=short --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --follow --
     co = checkout
-	br = branch
-	ci = commit
-	st = status
-	last = log -1 HEAD
+    br = branch
+    ci = commit
+    st = status
+    last = log -1 HEAD
+    # such as 'git pr 482 upstream'
+    pr  = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    prc = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [core]
-	editor = vim
+    editor = vim
 [push]
     default = simple
