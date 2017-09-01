@@ -204,6 +204,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 map  \ <Plug>(easymotion-sn)
 omap \ <Plug>(easymotion-tn)
 " 跨窗口搜索行
+nmap <c-l> <Plug>(easymotion-overwin-line)
 nmap J <Plug>(easymotion-overwin-w)
 
 " vim-javascript
