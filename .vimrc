@@ -199,11 +199,12 @@ nnoremap <silent><Leader>u :UndotreeToggle<CR>
 " 忽略搜索大小写
 let g:EasyMotion_smartcase = 1
 " 快速搜索前两个字符
-nmap s <Plug>(easymotion-s2)
+nmap s <Plug>(easymotion-overwin-f2)
+" 搜索多个字符
 map  \ <Plug>(easymotion-sn)
 omap \ <Plug>(easymotion-tn)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+" 跨窗口搜索行
+nmap J <Plug>(easymotion-overwin-w)
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -241,7 +242,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " markdown
 Plugin 'tpope/vim-markdown'
 " go autocompletion
-Plugin 'nsf/gocode', {'rtp': 'nvim/'}
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " 和 taglist 类似
 Plugin 'majutsushi/tagbar'
 " 目录显示
@@ -263,13 +264,12 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
-" 语法检查
-Plugin 'vim-syntastic/syntastic'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
 Plugin 'elzr/vim-json'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 
@@ -294,6 +294,9 @@ call vundle#end()
 " <leader>cc 添加注释
 " <leader>c<Space> 未添加注释时添加，已添加取消，会给每一行添加注释
 " <Leader>cm 使用多行注释
+
+" vim-go
+" K 查看函数或变量原型以及 godoc
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
