@@ -212,32 +212,6 @@ function install_package
         fi
         echo -e "${lc}${cgreen}Install tmux success${rc}"
     fi
-    # gem
-    echo "check gem..."
-    which gem &> /dev/null
-    if [ $? -ne 0 ]; then
-        echo "gem is not found, to install..."
-        sudo yum install -y rubygems
-        if [ $? -ne 0 ]; then
-            echo -e "${lc}${cred}Install gem failed${rc}"
-            exit -1
-        fi
-        echo -e "${lc}${cgreen}Install gem success${rc}"
-    fi
-    # change gem source
-    gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
-    # tmuxinator
-    echo "check tmuxinator..."
-    which tmuxinator &> /dev/null
-    if [ $? -ne 0 ]; then
-        echo "tmuxinator is not found, to install..."
-        gem install tmuxinator
-        if [ $? -ne 0 ]; then
-            echo -e "${lc}${cred}Install tmuxinator failed${rc}"
-            exit -1
-        fi
-        echo -e "${lc}${cgreen}Install tmuxinator success${rc}"
-    fi
     # tree
     echo "check tree..."
     which tree &> /dev/null
@@ -263,10 +237,10 @@ function install_package
         echo -e "${lc}${cgreen}Install wget success${rc}"
     fi
     # ag(the_silver_searcher)
-    echo "check ag..."
-    which wget &> /dev/null
+    echo "check ag(the_silver_searcher)..."
+    which ag &> /dev/null
     if [ $? -ne 0 ]; then
-        echo "ag is not found, to install..."
+        echo "ag(the_silver_searcher) is not found, to install..."
         sudo yum install -y the_silver_searcher
         if [ $? -ne 0 ]; then
             echo -e "${lc}${cred}Install ag failed${rc}"
@@ -296,13 +270,13 @@ function create_dir()
             echo -e "${lc}${cgreen}mkdir -p ${HOME}/go_projects/src success${rc}"
         fi
     fi
-    # .tmuxinator
-    if [ ! -d "${HOME}/.tmuxinator" ]; then
-        mkdir -p ${HOME}/.tmuxinator
+    # tmp
+    if [ ! -d "${HOME}/tmp" ]; then
+        mkdir -p ${HOME}/tmp
         if [ $? -ne 0 ]; then
-            echo -e "${lc}${cred}mkdir -p ${HOME}/.tmuxinator failed${rc}"
+            echo -e "${lc}${cred}mkdir -p ${HOME}/tmp failed${rc}"
         else
-            echo -e "${lc}${cgreen}mkdir -p ${HOME}/.tmuxinator success${rc}"
+            echo -e "${lc}${cgreen}mkdir -p ${HOME}/tmp success${rc}"
         fi
     fi
 }
@@ -340,6 +314,36 @@ function download()
         echo -e "${lc}${cgreen}Download oh-my-zsh over${rc}"
     fi
     cd ${now_path}
+    # tmux
+    cd ${HOME}/local/packages
+    if [ ! -d "${HOME}/local/packages/tmux2.6" ]; then
+        echo 'start download tmux2.6...'
+        wget --no-check-certificate https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Download tmux failed${rc}"
+            exit -1
+        else
+            echo -e "${lc}${cgreen}Download tmux success${rc}"
+        fi
+        tar -zxvf ./tmux-2.6.tar.gz
+        cd ./tmux-2.6
+        ./configure && make
+        sudo make install
+        rm -f ./tmux-2.6.tar.gz
+    fi
+    # tmux plugin tpm
+    if [ ! -d "$${HOME}/.tmux/plugins/tpm" ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+}
+
+function extra()
+{
+    # gvm
+    if [ ! -d "${HOME}/.gvm" ]; then
+        zsh < <(curl -s -S -L https://raw.githubusercontent.com/fatedier/gvm/self/binscripts/gvm-installer)
+        echo -e "${lc}${cgreen}Download gvm over${rc}"
+    fi
 }
 
 function use_zsh()
@@ -364,14 +368,19 @@ y|Y)
     download
     # 将配置文件放到指定目录下
     copy_cfg_files
+
     # 使用bash或者zsh执行不同的操作
     if [ "${use_shell}"X = "bash" ]; then
         add_include_to_bash_profile
     else
         use_zsh
     fi
+
+    extra
+
     # vim相关
     check_dir_vundle
+
     echo "Setup over"
     ;;
 n|N)
