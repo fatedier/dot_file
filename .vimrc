@@ -221,6 +221,9 @@ autocmd FileType html noremap <silent> <Leader>f :call HtmlBeautify()<CR>
 autocmd FileType css noremap <silent> <Leader>f :call CSSBeautify()<CR>
 
 " vundle 插件管理器的设置
+autocmd FileType yaml set sw=2 ts=2
+
+" vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -270,6 +273,8 @@ Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
 Plugin 'elzr/vim-json'
+Plugin 'cespare/vim-toml'
+Plugin 'yaml.vim'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'kchmck/vim-coffee-script'
 
