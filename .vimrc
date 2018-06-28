@@ -220,8 +220,11 @@ autocmd FileType javascript noremap <silent> <Leader>f :call JsBeautify()<CR>
 autocmd FileType html noremap <silent> <Leader>f :call HtmlBeautify()<CR>
 autocmd FileType css noremap <silent> <Leader>f :call CSSBeautify()<CR>
 
-" vundle 插件管理器的设置
+" yaml special config
 autocmd FileType yaml set sw=2 ts=2
+
+" toml special config
+autocmd FileType toml set sw=2 ts=2
 
 " vundle 插件管理器的设置
 set rtp+=~/.vim/bundle/Vundle.vim
