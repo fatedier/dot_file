@@ -93,6 +93,8 @@ au FileType go nmap gl :GoMetaLinter<CR>
 au FileType go nmap gc :GoCallees<CR>
 au FileType go nmap gr :GoReferrers<CR>
 
+nnoremap ff :syntax off<CR>
+
 " -------------插件设置------------
 " winmanager 的样式设置，包括taglist
 let g:winManagerWindowLayout='NERDTree|Tagbar'
