@@ -155,6 +155,7 @@ let g:go_highlight_function_calls= 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_build_constraints = 1
 let g:go_fmt_fail_silently = 1  " 退出时如果语法出错不提醒
 let g:go_fmt_autosave = 0       " 保存时不自动执行gofmt
 let g:go_def_mode = 'godef'     " 默认是 guru，在大型项目里搜索速度太慢
