@@ -31,7 +31,7 @@ set noswf               " 不使用交换文件
 set foldmethod=marker   " 对文中的标志折叠
 
 if has("mouse")
-    set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
+    " set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
 endif
 
 " -------------颜色配置-------------
@@ -51,9 +51,6 @@ set pastetoggle=<F4>
 " Ctrl+\ 取消缩进
 inoremap <C-\> <Esc><<i
 
-" 在vim中调用make进行编译，如果出错，会自动打开QuickFix窗口
-nnoremap <F5> :w<CR>:make<CR><CR>:cw<CR>
-nnoremap <F6> :!make clean<CR>
 " 跳转到上一个或下一个错误
 nnoremap <F7> :cp<CR>
 nnoremap <F8> :cn<CR>
@@ -89,9 +86,40 @@ au FileType go nmap <Leader>t <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap gt <Plug>(go-test)
 au FileType go nmap gi :GoImports<CR>
-au FileType go nmap gl :GoMetaLinter<CR>
+au FileType go nmap gl <Plug>(go-iferr)
 au FileType go nmap gc :GoCallees<CR>
 au FileType go nmap gr :GoReferrers<CR>
+au FileType go nmap gf :GoFillStruct<CR>
+au FileType go nmap gv :GoVet<CR>
+
+" vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls= 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_fail_silently = 1  " 退出时如果语法出错不提醒
+let g:go_fmt_autosave = 0       " 保存时不自动执行gofmt
+let g:go_imports_autosave = 0
+let g:go_mod_fmt_autosave = 0
+let g:go_metalinter_autosave = 0
+let g:go_def_mode='gopls'
+set completeopt-=preview
+
+" key-bind for rust
+au FileType rust nmap gi :RustFmt<CR>
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap <leader>t <Plug>(rust-def-tab)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+au FileType rust nmap <leader>r :RustRun<CR>
+
+let g:racer_experimental_completer = 1
+
+" terminal
+nnoremap gT :term go test -v --cover ./...<CR>
 
 nnoremap ff :syntax off<CR>
 
@@ -149,21 +177,6 @@ if has('conceal')
     set conceallevel=2 concealcursor=niv
 endif
 
-" vim-go
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls= 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_fail_silently = 1  " 退出时如果语法出错不提醒
-let g:go_fmt_autosave = 0       " 保存时不自动执行gofmt
-let g:go_imports_autosave = 0
-let g:go_mod_fmt_autosave = 0
-let g:go_metalinter_autosave = 0
-let g:go_def_mode='gopls'
-set completeopt-=preview
-
 " tpope/vim-fugitive
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
@@ -199,7 +212,7 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vmt_auto_update_on_save = 0
 
 " SudoEdit
-nnoremap <Leader>s :SudoWrite<CR>
+nnoremap <Leader>s :execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 
 " undotree
 nnoremap <silent><Leader>u :UndotreeToggle<CR>
@@ -251,14 +264,15 @@ Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 " golang插件
 Plugin 'fatih/vim-go'
+" rust 插件
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 " ack搜索
 Plugin 'mileszs/ack.vim'
 " 快速文件打开工具
 Plugin 'ctrlpvim/ctrlp.vim'
 " markdown
 Plugin 'tpope/vim-markdown'
-" go autocompletion
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " 和 taglist 类似
 Plugin 'majutsushi/tagbar'
 " 目录显示
@@ -267,8 +281,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mzlogin/vim-markdown-toc'
 " git
 Plugin 'tpope/vim-fugitive'
-" sudo
-Plugin 'chrisbra/SudoEdit.vim'
 " undo窗口
 Plugin 'mbbill/undotree'
 " 快捷操作 surround
