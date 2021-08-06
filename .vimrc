@@ -85,7 +85,7 @@ au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 au FileType go nmap <Leader>t <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap gt <Plug>(go-test)
-au FileType go nmap gi :GoImports<CR>
+au FileType go nmap gi <Plug>(go-fmt)
 au FileType go nmap gl <Plug>(go-iferr)
 au FileType go nmap gc :GoCallees<CR>
 au FileType go nmap gr :GoReferrers<CR>
