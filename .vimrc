@@ -85,7 +85,7 @@ au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 au FileType go nmap <Leader>t <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap gt <Plug>(go-test)
-au FileType go nmap gi <Plug>(go-fmt)
+au FileType go nmap gi <Plug>(go-imports)<Plug>(go-fmt)
 au FileType go nmap gl <Plug>(go-iferr)
 au FileType go nmap gc :GoCallees<CR>
 au FileType go nmap gr :GoReferrers<CR>
@@ -337,3 +337,10 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 filetype plugin on
+
+if &diff
+    highlight DiffAdd    cterm=bold ctermfg=1 ctermbg=0 gui=none guifg=bg guibg=Red
+    highlight DiffDelete cterm=bold ctermfg=0 ctermbg=0 gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=bold ctermfg=2 ctermbg=0 gui=none guifg=bg guibg=Red
+    highlight DiffText   cterm=bold ctermfg=3 ctermbg=0 gui=none guifg=bg guibg=Red
+endif
