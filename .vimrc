@@ -182,7 +182,7 @@ endif
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
-nnoremap <silent> <Leader>gb :Gblame<CR>
+nnoremap <silent> <Leader>gb :Git blame<CR>
 nnoremap <silent> <Leader>gl :Glog<CR>
 nnoremap <silent> <Leader>gp :Git push<CR>
 
@@ -236,6 +236,9 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 
 let g:syntastic_javascript_checkers = ['jshint']
+
+" vim-json
+let g:vim_json_syntax_conceal = 0
 
 " vim-jsbeautify
 autocmd FileType javascript noremap <silent> <Leader>f :call JsBeautify()<CR>
