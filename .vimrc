@@ -119,6 +119,9 @@ au FileType rust nmap <leader>r :RustRun<CR>
 
 let g:racer_experimental_completer = 1
 
+" key-bind for jq(should install jq first)
+au FileType json nmap gi :%!jq .<CR>
+
 " terminal
 nnoremap gT :term go test -v --cover ./...<CR>
 
