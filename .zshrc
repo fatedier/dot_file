@@ -68,6 +68,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+unset LESS
+
 # autojump的配置
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
