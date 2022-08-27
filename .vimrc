@@ -66,6 +66,9 @@ for n in range(1,9)
     execute 'nnoremap <silent> <C-n>'.n ':tabnext '.n.'<CR>'
 endfor
 
+nnoremap H ^
+nnoremap L $
+
 " 全文 tab 转 空格
 nnoremap <silent> ts :%ret!<CR>
 
@@ -106,6 +109,8 @@ let g:go_mod_fmt_autosave = 0
 let g:go_metalinter_autosave = 0
 let g:go_def_mode='gopls'
 let g:go_fmt_command='gofmt'
+let g:go_metalinter_command = "golangci-lint run"
+let g:go_metalinter_enabled=[]
 set completeopt-=preview
 
 " key-bind for rust
@@ -124,6 +129,7 @@ au FileType json nmap gi :%!jq .<CR>
 
 " terminal
 nnoremap gT :term go test -v --cover ./...<CR>
+nnoremap <leader>p :terminal<CR>
 
 nnoremap ff :syntax off<CR>
 
@@ -200,7 +206,7 @@ nnoremap <Leader>a :Ack!<Space>
 
 " ctrlp
 let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_mruf_max            = 500
+let g:ctrlp_mruf_max            = 1000
 let g:ctrlp_custom_ignore = 'DS_Store\|\.git\|\.hg\|\.svn\|optimized\|compiled\|node_modules\|bower_components'
 let g:ctrlp_open_new_file       = 1
 
