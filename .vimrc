@@ -260,61 +260,68 @@ autocmd FileType yaml set sw=2 ts=2
 " toml special config
 autocmd FileType toml set sw=2 ts=2
 
-" vundle 插件管理器的设置
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" vue special config
+autocmd FileType typescript set sw=2 sts=2
+autocmd FileType vue set sw=2 sts=2
 
-" Plugins
-" Vundle
-Plugin 'VundleVim/Vundle.vim'
+" Install vim-plug if we don't already have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 " 窗口管理器
-Plugin 'winmanager'
+Plug 'vim-scripts/winmanager'
 " 标签工具
-Plugin 'Visual-Mark'
+Plug 'vim-scripts/Visual-Mark'
 " 代码补全工具
-Plugin 'neocomplcache'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+"Plug 'vim-scripts/neocomplcache'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 " golang插件
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 " rust 插件
-Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 " ack搜索
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " 快速文件打开工具
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " markdown
-Plugin 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 " 和 taglist 类似
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " 目录显示
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " markdown toc
-Plugin 'mzlogin/vim-markdown-toc'
+Plug 'mzlogin/vim-markdown-toc'
 " git
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " undo窗口
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 " 快捷操作 surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " 代码注释
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " 快速跳转
-Plugin 'easymotion/vim-easymotion'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-fuzzy.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'posva/vim-vue'
-Plugin 'elzr/vim-json'
-Plugin 'cespare/vim-toml'
-Plugin 'yaml.vim'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'elzr/vim-json'
+Plug 'cespare/vim-toml'
+Plug 'vim-scripts/yaml.vim'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'kchmck/vim-coffee-script'
+" Github copilot
+Plug 'github/copilot.vim'
 
-call vundle#end()
+call plug#end()
 
 " 插件按键说明
 

@@ -22,24 +22,18 @@ function check_user()
 function show_help()
 {
     echo -e "\n${lc}${cgreen}The following contents will to be done:${rc}\n"
-    echo -e "1 Install Vundle(vim plugin) to ~/.vim/bundle/vundle/\n"
+    echo -e "1 Install vim-plug(vim plugin)\n"
     echo -e "2 Copy config files to corresponding directory\n"
     echo -e "  including .aliascfg .gitconfig .vimrc .zshrc .tmux.conf\n"
     echo -e "3 Download some packages using yum\n"
     echo -e "4 Your username is ${lc}${cred}${username}${rc}\n"
 }
 
-function check_dir_vundle
+function install_vim_plug()
 {
-    if [ -e "${HOME}/.vim/bundle/Vundle.vim/" ]; then
-        echo -e "${lc}${cgreen}Vundle was already installed, setup will continue...${rc}"
-    else
-        echo -e "\nVundle is installing..."
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        echo "Start to install plugin by vundle..."
-        vim +PluginInstall +qall
-        echo -e "${lc}${cgreen}Install vundle success${rc}"
-    fi
+    echo "Start to install plugin by vim-plug..."
+    vim +PlugInstall +qall
+    echo -e "${lc}${cgreen}Install vim-plug success${rc}"
 }
 
 function copy_cfg_files
@@ -379,7 +373,7 @@ y|Y)
     extra
 
     # vim相关
-    check_dir_vundle
+    install_vim_plug
 
     echo "Setup over"
     ;;
