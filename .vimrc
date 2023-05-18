@@ -131,7 +131,8 @@ au FileType json nmap gi :%!jq .<CR>
 nnoremap gT :term go test -v --cover ./...<CR>
 nnoremap <leader>p :terminal<CR>
 
-nnoremap ff :syntax off<CR>
+nnoremap <leader>ff :syntax off<CR>
+nnoremap <leader>FF :syntax on<CR>
 
 " -------------插件设置------------
 " winmanager 的样式设置，包括taglist
