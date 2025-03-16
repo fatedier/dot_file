@@ -52,8 +52,14 @@ if [ -f ~/.aliascfg ]; then
     . ~/.aliascfg
 fi
 
+[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
+
+export GOPATH="${HOME}/go_projects"
 export PATH="${PATH}:${HOME}/bin:${GOPATH}/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export GOPROXY="https://goproxy.io,${GOPROXY}"
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 source $ZSH/oh-my-zsh.sh
 
