@@ -195,11 +195,40 @@ function extra() {
         fi
         echo -e "${lc}${cgreen}Successfully installed gvm${rc}"
     fi
+
+    # scmpuff
+    if ! command -v scmpuff &> /dev/null; then
+        echo 'Start downloading scmpuff...'
+        local scmpuff_tmp_dir="${HOME}/tmp/scmpuff"
+        mkdir -p "${scmpuff_tmp_dir}"
+        wget https://github.com/mroth/scmpuff/releases/download/v0.5.0/scmpuff_0.5.0_linux_x64.tar.gz -O "${scmpuff_tmp_dir}/scmpuff.tar.gz"
+        if [ $? -ne 0 ]; then
+            echo -e "${lc}${cred}Download scmpuff failed${rc}"
+        else
+            tar -xzf "${scmpuff_tmp_dir}/scmpuff.tar.gz" -C "${scmpuff_tmp_dir}"
+            sudo mv "${scmpuff_tmp_dir}/scmpuff" /usr/local/bin/
+            rm -rf "${scmpuff_tmp_dir}"
+            if [ -f "/usr/local/bin/scmpuff" ]; then
+                echo -e "${lc}${cgreen}Successfully installed scmpuff to /usr/local/bin${rc}"
+            else
+                echo -e "${lc}${cred}Failed to install scmpuff to /usr/local/bin${rc}"
+            fi
+        fi
+    else
+        echo "scmpuff is already installed"
+    fi
 }
 
 function use_zsh() {
     sudo chsh -s "$(which zsh)" "${username}"
     echo -e "${lc}${cgreen}You need to relogin to use zsh${rc}"
+}
+
+function setup_locales() {
+    echo "Setting up locales..."
+    sudo locale-gen en_US.UTF-8
+    sudo update-locale
+    echo -e "${lc}${cgreen}Locales setup completed${rc}"
 }
 
 # Check current user
@@ -214,6 +243,7 @@ read -r m_start_flag
 
 case ${m_start_flag} in
     y|Y)
+        setup_locales
         install_package
         create_dir
         download

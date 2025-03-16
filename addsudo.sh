@@ -14,7 +14,12 @@ if [ "${now_user}X" != "root"X ]; then
     exit -1
 fi
 
-useradd ${useradd}
+id ${username} &>/dev/null
+if [ $? -eq 0 ]; then
+    echo -e "${lc}${cgreen}user ${username} already exists, skipping creation${rc}"
+else
+    useradd ${useradd}
+fi
 
 chmod o+w /etc/sudoers
 cat /etc/sudoers | grep ${username}$'\t'ALL=\(ALL\) &>/dev/null
