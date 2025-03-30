@@ -30,13 +30,7 @@ set incsearch           " 输入字符串就显示匹配点
 set showtabline=2       " 总是显示标签页
 set noswf               " 不使用交换文件
 set foldmethod=marker   " 对文中的标志折叠
-colorscheme fatedier
-
-" -------------颜色配置-------------
-" 补全弹出窗口
-" hi Pmenu ctermbg=lightmagenta
-" 补全弹出窗口选中条目
-hi PmenuSel ctermbg=yellow ctermfg=black
+set background=light
 
 " -------------键盘映射-------------
 " F3 查找当前高亮的单词
@@ -271,6 +265,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'fatedier/fatedier.vim'
 " 窗口管理器
 Plug 'vim-scripts/winmanager'
 " 标签工具
@@ -347,18 +342,16 @@ call plug#end()
 " vim-go
 " K 查看函数或变量原型以及 godoc
 
+filetype plugin on
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-endif
-
-filetype plugin on
-
-if &diff
-    hi DiffAdd    cterm=bold ctermfg=1 ctermbg=0 gui=none guifg=bg guibg=Red
-    hi DiffDelete cterm=bold ctermfg=0 ctermbg=0 gui=none guifg=bg guibg=Red
-    hi DiffChange cterm=bold ctermfg=2 ctermbg=0 gui=none guifg=bg guibg=Red
-    hi DiffText   cterm=bold ctermfg=3 ctermbg=0 gui=none guifg=bg guibg=Red
+  try
+    colorscheme fatedier
+  " 忽略报错
+  catch /^Vim\%((\a\+)\)\=:E185/
+  endtry
 endif
