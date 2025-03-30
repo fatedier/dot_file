@@ -30,10 +30,7 @@ set incsearch           " 输入字符串就显示匹配点
 set showtabline=2       " 总是显示标签页
 set noswf               " 不使用交换文件
 set foldmethod=marker   " 对文中的标志折叠
-
-if has("mouse")
-    " set mouse=iv  " 在 insert 和 visual 模式使用鼠标定位
-endif
+colorscheme fatedier
 
 " -------------颜色配置-------------
 " 补全弹出窗口
@@ -279,7 +276,7 @@ Plug 'vim-scripts/winmanager'
 " 标签工具
 Plug 'vim-scripts/Visual-Mark'
 " 代码补全工具
-"Plug 'vim-scripts/neocomplcache'
+Plug 'Shougo/neocomplcache'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " golang插件
@@ -360,8 +357,8 @@ endif
 filetype plugin on
 
 if &diff
-    highlight DiffAdd    cterm=bold ctermfg=1 ctermbg=0 gui=none guifg=bg guibg=Red
-    highlight DiffDelete cterm=bold ctermfg=0 ctermbg=0 gui=none guifg=bg guibg=Red
-    highlight DiffChange cterm=bold ctermfg=2 ctermbg=0 gui=none guifg=bg guibg=Red
-    highlight DiffText   cterm=bold ctermfg=3 ctermbg=0 gui=none guifg=bg guibg=Red
+    hi DiffAdd    cterm=bold ctermfg=1 ctermbg=0 gui=none guifg=bg guibg=Red
+    hi DiffDelete cterm=bold ctermfg=0 ctermbg=0 gui=none guifg=bg guibg=Red
+    hi DiffChange cterm=bold ctermfg=2 ctermbg=0 gui=none guifg=bg guibg=Red
+    hi DiffText   cterm=bold ctermfg=3 ctermbg=0 gui=none guifg=bg guibg=Red
 endif
