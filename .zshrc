@@ -43,7 +43,8 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo autojump docker vagrant golang)
+zstyle ':omz:plugins:nvm' lazy yes
+plugins=(git sudo autojump docker vagrant golang kubectl minikube helm nvm)
 
 # User configuration
 
@@ -63,6 +64,8 @@ export LC_ALL=en_US.UTF-8
 
 source $ZSH/oh-my-zsh.sh
 
+SAVEHIST=50000
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -79,8 +82,11 @@ export EDITOR='vim'
 
 unset LESS
 
-# autojump的配置
+# autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
-# 命令提示符的展示
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# prompt
 PROMPT='[%{$reset_color%}%n@%m %{$fg_bold[green]%}%p%{$reset_color%}%d%{$reset_color%}]'
